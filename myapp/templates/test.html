@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a5a1a1;
+        }
+
+        /* Navbar styles */
+        .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: transparent;
+        transition: background-color 0.3s ease; /* Add transition for smooth color change */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.7); /* Change background color when scrolled */
+}
+
+/* Rest of your CSS styles... */
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            bottom: -4px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            transform: scaleX(1);
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .line {
+            width: 25px;
+            height: 2px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar:hover .burger .line:nth-child(1) {
+            transform: translateY(4px) rotate(45deg);
+        }
+
+        .navbar:hover .burger .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar:hover .burger .line:nth-child(3) {
+            transform: translateY(-4px) rotate(-45deg);
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'logo.png'%}" alt="Logo" width="94px" height="81px">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Your other HTML content goes here -->
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

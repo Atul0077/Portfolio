@@ -1,0 +1,863 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+
+
+
+.contact span:hover {
+    color: #fc44e6; /* Change color on hover */
+    transition: color 0.3s ease; /* Smooth transition effect */
+}
+
+
+
+.footer-section.links ul li a {
+    position: relative; /* Set position to relative */
+}
+
+.footer-section.links ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #eb65ac; /* Set background color */
+    transition: width 0.3s ease; /* Add transition for smooth animation */
+}
+
+.footer-section.links ul li a:hover::after {
+    width: 100%; /* Expand the line on hover */
+}
+
+        .achievement-card {
+            position: relative; /* Add position relative to enable absolute positioning for the button */
+            overflow: hidden; /* Hide overflowing content */
+}
+
+.achievement-card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.achievement-card:hover img {
+    transform: scale(1.1); /* Scale up the image on hover */
+}
+
+.see-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the button */
+    opacity: 0; /* Initially hide the button */
+    transition: opacity 0.3s ease; /* Add transition for smooth animation */
+}
+
+.achievement-card:hover .see-btn {
+    opacity: 1; /* Show the button on hover */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: flex-start; /* Align items to the start of the flex container */
+    align-items: flex-start; /* Align items to the start of the cross axis */
+}
+
+
+.about-card {
+    flex: 1; /* Allow the about card to grow */
+    margin-right: 20px; /* Add some margin between the cards */
+    margin-bottom: 20px; /* Add bottom margin to the about card */
+}
+
+.cloud-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-between; /* Space items evenly along the main axis */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.image-card {
+    width: 200px; /* Set the width of the image card */
+    height: 200px; /* Set the height of the image card */
+    border-radius: 50%; /* Apply circular border */
+    overflow: hidden; /* Hide overflow content */
+    margin-bottom: 20px; /* Add bottom margin to the image card */
+    margin-right: auto; /* Auto margin to push the image card to the left */
+    margin-left: 20px; /* Add left margin to create space between image card and text */
+}
+
+
+.image-card img {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove default inline spacing */
+}
+
+
+
+.image-card:hover {
+    transform: scale(1.1);
+}
+
+.about-card {
+    flex: 1; /* Allow the about card to grow to fill available space */
+    margin-right: 20px; /* Add some margin between the image card and the text */
+}
+
+
+
+
+        /* Style the more about section */
+#more-about {
+    background-color: #ffc5bb;
+    padding: 50px 0;
+}
+
+#more-about .container {
+    text-align: center;
+}
+
+#more-about h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#more-about p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+        
+
+.social-icons {
+    display: flex; /* Display icons in a row */
+}
+
+.social-icons a {
+    margin-left: 10px; /* Add space between icons */
+    position: relative; /* Position relative for absolute positioning of the icon */
+}
+
+.social-icons img {
+    width: 30px; /* Set the width of the icons */
+    height: 30px; /* Set the height of the icons */
+    border-radius: 50%; /* Make the icons round */
+    transition: transform 0.3s ease, border-radius 0.3s ease; /* Add transition for smooth animation */
+}
+
+/* Hover effect */
+.social-icons a:hover img {
+    transform: scale(1.1); /* Scale up the icon */
+    border-radius: 20%; /* Adjust border-radius on hover */
+}
+
+    .footer-bottom {
+    text-align: right; /* Align the content to the right */
+    padding-top: 20px;
+    border-top: 1px solid #777;
+    display: flex;
+    justify-content: space-between; /* Space between content and social icons */
+    align-items: center; /* Align items vertically */
+}
+
+.social-icons {
+    display: flex; /* Display icons in a row */
+}
+
+.social-icons a {
+    margin-left: 10px; /* Add space between icons */
+}
+
+.social-icons img {
+    width: 30px; /* Set the width of the icons */
+    height: 30px; /* Set the height of the icons */
+}
+    
+
+.contact-form {
+    max-width: 560px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.contact-input,
+.contact-textarea,
+.contact-btn {
+    border-radius: 5px; /* Rounded corners for input fields and button */
+    border: 1px solid #ccc; /* Add a border for visual separation */
+}
+
+.contact-input,
+.contact-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #45a049;
+}
+
+.contact-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+.contact-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: #45a049;
+}
+
+        .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 80px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-section {
+    margin: 20px;
+}
+
+.footer-section h2 {
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+}
+
+.contact {
+    margin-top: 20px;
+}
+
+.contact span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-section.links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section.links li {
+    margin-bottom: 10px;
+}
+
+.footer-section.links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #777;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+        /* Style the achievements section */
+#achievements {
+    text-align: center;
+}
+
+.achievements-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Style the achievement cards */
+.achievements-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.achievement-card {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.achievement-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Style the "See" button */
+.see-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: skyblue;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.see-btn:hover {
+    background-color: #00a8ff;
+}
+
+
+        /* Style the download resume button */
+.resume-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: skyblue;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resume-btn:hover {
+    background-color: #00a8ff;
+}
+
+/* Center the resume and achievements sections */
+#resume, #achievements {
+    text-align: center;
+}
+
+        /* CSS styles */
+
+        /* Reset default margin and padding */
+        /* CSS styles */
+#cursor {
+    display: inline-block;
+    width: 2px;
+    height: 25px;
+    background-color: rgb(0, 0, 0);
+    animation: blink 0.1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a5a1a1;
+        }
+
+        /* Navbar styles */
+    
+
+
+
+/* Rest of your CSS styles... */
+
+        
+        .navbar {
+            background-color: rgb(20, 52, 71);
+            color: #000000;
+            padding: 0.5px 0;
+            /* position: fixed;
+            top: 0;
+            width: 100%; */
+          
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: block;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            font-size: 24px;
+            flex-direction: row-reverse;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links a:hover::before {
+                transform: scaleX(1);
+        }
+        
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li:last-child {
+            margin-right: 0;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: #cf33cf;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .line {
+            width: 25px;
+            height: 3px;
+            background-color: #777777;
+            margin: 5px;
+            transition: transform 0.4s ease;
+        }
+
+        /* Add animation when burger menu is clicked */
+        .nav-active .line:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-active .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-active .line:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Section styles */
+        .section {
+            padding: 50px 0;
+            background-color: #ffc5bb;
+        }
+
+        .container {
+            padding: 0 20px;
+        }
+
+        .container h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .container ul {
+            list-style-type: none;
+        }
+
+        .container ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Center skills title and align skills container */
+        .skills-title {
+            text-align: center;
+            color: #000000;
+            margin-top: 20px;
+        }
+
+        .skills-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: #feb5a7;
+            padding: 50px 0;
+        }
+
+        /* Skill styles */
+        .skill {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .skill img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .skill:hover img {
+            transform: scale(1.7);
+        }
+
+        /* About me card styles */
+        .about-card {
+            /* background-color: #ffb8b8; */
+            border-radius: 72px;
+            box-shadow: 0 4px 8px rgb(32 26 26 / 10%);
+            padding: 46px;
+            margin-bottom: 25px;
+            background-image: url(https://marketplace.canva.com/EAEthkBVLfQ/1/0/1600w/canva-blush-wave-desktop-wallpaper-drvq3zaYl2E.jpg);
+        }
+        
+
+        .about-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Text to be typed out
+            const aboutText = "Hi, my name is Atul Prakash Baibhav and I'm doing BCA. I love coding and I am currently learning Django, a Python framework.";
+    
+            // Index to keep track of which character to display
+            let charIndex = 0;
+    
+            // Reference to the paragraph element
+            const aboutParagraph = document.getElementById('about-text');
+    
+            // Reference to the cursor element
+            const cursor = document.getElementById('cursor');
+    
+            // Function to add typing effect
+            function typeAboutText() {
+                if (charIndex < aboutText.length) {
+                    // Append the next character to the paragraph
+                    aboutParagraph.textContent += aboutText.charAt(charIndex);
+                    charIndex++;
+                    // Call the function recursively after a short delay
+                    setTimeout(typeAboutText, 50); // Adjust typing speed here (milliseconds)
+                } else {
+                    // Remove the cursor after typing is complete
+                    cursor.style.display = 'none';
+                    // Call the function to clear the about section and prompt the user
+                    setTimeout(clearAboutSection, 2000); // Wait for 2 seconds before clearing
+                }
+            }
+    
+            // Function to clear the about section and prompt the user
+            function clearAboutSection() {
+                aboutParagraph.textContent = ''; // Clear the about section
+                charIndex = 0; // Reset the character index
+                cursor.style.display = 'inline-block'; // Display the cursor again
+                // Text to prompt the user
+                const promptText = "Wanna know more about me? Connect on";
+                // Function to type out the prompt text
+                function typePromptText() {
+                    if (charIndex < promptText.length) {
+                        // Append the next character to the paragraph
+                        aboutParagraph.textContent += promptText.charAt(charIndex);
+                        charIndex++;
+                        // Call the function recursively after a short delay
+                        setTimeout(typePromptText, 50); // Adjust typing speed here (milliseconds)
+                    } else {
+                        // Call the function to add the LinkedIn and Instagram logos with hyperlinks
+                        addSocialLinks();
+                    }
+                }
+                // Call the function to type out the prompt text
+                typePromptText();
+            }
+    
+            // Function to add LinkedIn and Instagram logos with hyperlinks
+            function addSocialLinks() {
+                // LinkedIn logo with hyperlink
+                aboutParagraph.innerHTML += '<a href="https://www.linkedin.com/in/atul-prakash-49aa74293/"><img src="{% static 'linkdn.png' %}" alt="LinkedIn" width="30px" height="30px" style="margin-right: 10px;"></a>';
+                aboutParagraph.innerHTML += '<a href="https://www.instagram.com/hey.atullll/"><img src="{% static 'instaaaa.jpeg' %}" alt="Instagram" width="30px" height="30px"></a>';
+            }
+    
+            // Call the function when the page is loaded
+            typeAboutText();
+        });
+
+
+        // navbar navigation
+ 
+
+    </script>
+    
+    
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo" style:"hover: transform: scale(1.7); ">
+                <a href="/">
+                <img src="{% static 'logo.png'%}" alt="Logo" width="94px" height="81px"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#resume">Resume</a></li> <!-- Added Resume link -->
+                <li><a href="#achievements">Achievements</a></li> <!-- Added Achievements link -->
+                <li><a href="#contact">Contact Us</a></li> <!-- Added Contact Us link -->
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </nav>
+    
+
+<section id="about" class="section">
+    <div class="container">
+        <h2>About Me</h2>
+        <div class="about-card" style="background-image: url(https://marketplace.canva.com/EAEthkBVLfQ/1/0/1600w/canva-blush-wave-desktop-wallpaper-drvq3zaYl2E.jpg);">
+            <img src="{% static 'image3.png' %}" alt="Profile Picture" width="auto">
+            <p id="about-text"> <!-- Add an ID to the paragraph -->
+               
+                <span id="cursor"></span> <!-- Span element for the cursor -->
+            </p>
+            
+        </div>
+    </div>
+</section>
+<section id="more-about" class="section">
+    <div class="container cloud-container">
+        <div class="about-card">
+            
+            <h2>More About Myself</h2>
+            <div class="image-card">
+                <img src="{% static 'myselffff.jpeg' %}" alt="Your Name">
+                <p>Atul Prakash Baibhav</p>
+            </div>
+            <p> I'M  a student of Vivekanada institute of professional studies</p>
+            <p>I'm currently pursuing my Bachelor's in Computer Applications (BCA), fueled by a fervent passion for programming and a perpetual thirst for knowledge in emerging technologies. Beyond coding, I find solace and expression in the realm of art, where sketching and drawing serve as my creative sanctuaries. Music accompanies me on this journey, offering inspiration and solace with its diverse melodies, from soothing classical compositions to energizing rock anthems.
+
+                Thriller movies captivate me with their gripping narratives and thought-provoking twists, stimulating my imagination and critical thinking long after the credits roll. As an avid reader, I delve into fiction and non-fiction alike, broadening my perspectives and feeding my curiosity.
+                
+                Sports, particularly badminton, provide a dynamic outlet for physical fitness and mental agility. Whether engaging in friendly matches or competitive tournaments, badminton fosters camaraderie and personal growth, instilling values of discipline and resilience.
+                
+                Amidst the hustle, I cherish moments of tranquility in nature, embracing the simple yet profound beauty of lush greenery or mesmerizing sunsets by the beach. These moments, intertwined with my diverse interests and hobbies, enrich my life's tapestry, complementing my fervor for coding and fostering a holistic approach to personal growth</p>
+        </div>
+        <!-- Image card for yourself -->
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<hr>
+
+<section id="skills" class="section">
+    <div class="container">
+        <h2 class="skills-title">Skills</h2>
+    </div>
+    <div class="skills-container">
+        <div class="skill">
+            <img src="{% static 'ht.jpg' %}" alt="HTML">
+        </div>
+        <div class="skill">
+            <img src="{% static 'djangoooo.jpg' %}" alt="Django">
+        </div>
+        <div class="skill">
+            <img src="{% static 'java.png' %}" alt="JavaScript">
+        </div>
+        <div class="skill">
+            <img src="{% static 'pythonnnn.png' %}" alt="Python">
+        </div>
+        <div class="skill">
+            <img src="{% static 'css.png' %}" alt="CSS">
+        </div>
+    </div>
+</section>
+
+<!-- Add more sections or content as needed -->
+<section id="resume" class="section">
+    <div class="container">
+        <h2>Resume</h2>
+        
+        <a href="{% static 'Atul Prakash.pdf' %}" download><button class="resume-btn">Download My Resume</button></a>
+    </div>
+</section>
+
+<section id="achievements" class="section">
+    <div class="container">
+        <h2 class="achievements-title">Achievements</h2>
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <img src="{% static 'c1.png' %}" alt="Achievement 1">
+                <button class="see-btn" ><a href="https://www.udemy.com/certificate/UC-2f2f2ae2-294f-40ff-8eda-7c633001a90a/">see</a></button>
+            </div>
+            <div class="achievement-card">
+                <img src="{% static 'c++.png' %}" alt="Achievement 2">
+                <button class="see-btn" ><a href="https://www.udemy.com/certificate/UC-6c85cae8-a5d2-4141-b0ad-98fd9582405d/">see</a></button>
+            </div>
+            <div class="achievement-card">
+                <img src="{% static 'java2.png' %}" alt="Achievement 3">
+                <button class="see-btn" ><a href="https://infyspringboard.onwingspan.com/public-assets/infosysheadstart/cert/lex_auth_01384201663044812810556_shared/1-e7a7af85-b7ce-4ede-b81c-70d4134c4de2.pdf">see</a></button>
+            </div>
+        
+        </div>
+    </div>
+    <div class="social-icons" style="display: block; margin: 0 auto;">
+        <h4 style="align-content: center;"> and many more... 
+            Connect on linkedin to see all 
+            <a href="https://www.linkedin.com/in/atul-prakash-49aa74293/" target="_blank"><img src="{% static 'linkdn.png' %}" alt="LinkedIn"></a>
+        </h4>
+    </div>
+</section>
+<hr>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>Thank you for visiting my site. Here are my contact details:</p>
+                <div class="contact">
+                    <span><i class="fas fa-phone"></i> +91 9685850078</span>
+                    <span><i class="fas fa-envelope"></i> atul1291prakash@gmail.com</span>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-form">
+                <section id="contact" class="section">
+                    <div class="container">
+                        <h2>Contact Us</h2>
+                        <div class="contact-form">
+                            <form action="{% url 'submit_contact_form' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="name" class="contact-input" placeholder="Your Name" required>
+                                <input type="email" name="email" class="contact-input" placeholder="Your Email" required>
+                                <textarea name="message" class="contact-textarea" placeholder="Your Message" rows="5" required></textarea>
+                                <button type="submit" class="contact-btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; AtulPrakash.in | Designed by Atul P.B
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/atul-prakash-49aa74293/" target="_blank"><img src="{% static 'linkdn.png' %}" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/hey.atullll/" target="_blank"><img src="{% static 'instaaaa.jpeg' %}" alt="Instagram"></a>
+                <a href="https://wa.me/message/35OJT4NKQMPKJ1" target="_blank"><img src="{% static 'wp.png' %}" alt="Whatsapp"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
