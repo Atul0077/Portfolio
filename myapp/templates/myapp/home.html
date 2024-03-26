@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
 
+/* Your existing CSS styles... */
+
+/* Dark Mode Styles */
+/* Add styles for dark mode */
+/* .dark-mode .section, .dark-mode div {
+    background-color: #333; /* Dark background color */
+    /* color: #fff; Light text color */
+    /* Add more styles for dark mode here */
+/* }
+.dark-mode .about-card  {
+    background-image: url("{% static 'background_dark.png' %}");
+/* } */
 
 
 .contact span:hover {
@@ -668,6 +680,25 @@
             typeAboutText();
         });
 
+  
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const sections = document.querySelectorAll('.section'); // Select all sections with the "section" class
+
+        themeToggle.addEventListener('click', function() {
+            // Toggle dark mode class for body
+            body.classList.toggle('dark-mode');
+
+            // Toggle dark mode class for each section
+            sections.forEach(section => {
+                section.classList.toggle('dark-mode');
+            });
+        });
+    });
+
+
 
         // navbar navigation
  
@@ -695,7 +726,10 @@
                 <div class="line"></div>
             </div>
         </div>
+        
     </nav>
+    <!-- <button id="theme-toggle">Toggle Theme</button> -->
+
     
 
 <section id="about" class="section">
@@ -733,6 +767,7 @@
         
     </div>
 </section>
+
 
 
 
